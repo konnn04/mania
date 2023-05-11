@@ -139,10 +139,11 @@ function creNote() {
     var creNoteInter = setInterval(() => {
         clock+= steptime/10000;
 
-        if (clock >=  (delay) && !playCheck) {
+        if (clock >=  (delay+0.1) && !playCheck) {
             music.play()
             playCheck=true
         }
+        
         if (clock >= beatmapAll[step] ) {
             step++;
             let i = Math.floor(Math.random() * 4)
