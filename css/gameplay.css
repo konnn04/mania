@@ -1,0 +1,191 @@
+    :root {
+    --linkbg: url(https://i0.wp.com/anitrendz.net/news/wp-content/uploads/2023/04/01_oshinoko_184.jpg);
+    --opctbg: 50%;
+    --speed: 2s;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#gameplay {
+    position: relative;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+#bg-main {
+    transition: all .2s linear;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: var(--linkbg);
+    filter: brightness(var(--opctbg));
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+#gamezone {
+    overflow: hidden;
+    position: relative;
+    margin: auto;
+    width: fit-content;
+    height: 100%;
+    display: flex;
+}
+
+#stage {
+    display: flex;
+    width: 600px;
+    height: 100%;
+}
+
+.line {
+    position: relative;
+    width: 25%;
+    height: 100%;
+    border-left: 1px solid #fff;
+}
+
+@keyframes down {
+    from {
+        translate: 0 0;
+    }
+    
+    to {
+        translate: 0 calc(100vh + 50px);
+    }
+}
+
+.line:last-child {
+    border-right: 1px solid #fff;
+}
+
+#taskbar {
+    width: 100%;
+    height: 7px;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+#zonecorrect {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 15%;
+    left: 0;
+    z-index: 0;
+    border: 1px solid #ffffff;
+}
+
+#score {
+    width: 100%;
+    color: #fff;
+    font-size: 3rem;
+    text-align: center;
+    height: fit-content;
+    position: absolute;
+    top: 20px;
+    z-index: 1;
+}
+
+.note1 {
+    position: absolute;
+    left: 0;
+    bottom: 100vh;
+    width: 100%;
+    height: 50px;
+    background-color: #ffffff;
+    z-index: -1;
+    cursor: pointer;
+    opacity: 0;
+}
+
+#play,#ending {
+    position: absolute;
+    color: #fff;
+    font-size: 3rem;
+    text-align: center;
+    width: 200px;
+    left: calc(50% - 100px);
+    bottom: 50%;
+    z-index: 99;
+    cursor: pointer;
+    user-select: none;
+}
+
+#ending{
+    display: none;
+}
+
+
+#status {
+    position: absolute;
+    width: 300px;
+    height: fit-content;
+    left: calc(50% - 150px);
+    bottom: 30%;
+    z-index: 99;
+    user-select: none;
+}
+
+#status>p {
+    color: #fff;
+    font-size: 3rem;
+    text-align: center;
+    width: 100%;
+    animation: status 1s ease-in;
+    opacity: 0;
+}
+#combo{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.ok {
+    animation: status 1s ease-in;
+}
+
+@keyframes status {
+    0% {
+        opacity: 0;
+        scale: 0;
+    }
+    10% {
+        opacity: 1;
+        scale: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #stage {
+        width: 100vw;
+        max-width: 600px;
+        height: 100%;
+    }
+}
+
+@media only screen and (max-height: 480px) {
+    #stage {
+        display: flex;
+        width: 100vw;
+        height: 100%;
+        transform: perspective(40px) rotateX(6deg);
+        scale: 0.65;
+        translate: 0 -25vh;
+    }}
