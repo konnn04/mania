@@ -1,5 +1,5 @@
     :root {
-    --linkbg: url(https://i0.wp.com/anitrendz.net/news/wp-content/uploads/2023/04/01_oshinoko_184.jpg);
+    --linkbg: url();
     --opctbg: 50%;
     --speed: 2s;
 }
@@ -11,13 +11,15 @@
 }
 
 #gameplay {
+    transition: all .5s;
     position: relative;
-    display: flex;
     width: 100vw;
     height: 100vh;
+    display: none;
+
 }
 
-#bg-main {
+.bg-main {
     transition: all .2s linear;
     width: 100%;
     height: 100%;
