@@ -1,6 +1,6 @@
 const line = document.querySelectorAll(".line")
 const playBtn = document.getElementById("play")
-const music = new Audio(`${key}/audio/idol.mp3`)
+const music = new Audio(`https://cdn.glitch.global/dc6948cb-dff5-4efc-86db-fe258b6f1750/Idol.mp3`)
 const textScore = document.getElementById("status")
 const zonecorrect = document.getElementById("zonecorrect")
 const root = document.documentElement
