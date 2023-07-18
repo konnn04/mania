@@ -19,7 +19,7 @@ var bg = "https://i0.wp.com/anitrendz.net/news/wp-content/uploads/2023/04/01_osh
 
 var step=0;
 
-var speed = 1.8;
+var speed = .8;
 var difficult = 1;
 var ranDif = difficult;
 
@@ -59,13 +59,13 @@ line.forEach((e, i) => {
         hit.currentTime=0
         hit.play()
         var offset = Math.abs(note[i][nd[i]].getBoundingClientRect().top - zonecorrect.offsetTop)
-        if (offset < 250) {
+        if (offset < 300) {
             note[i][nd[i]].style.opacity = 0;
             nd[i]++;
             //Ghi max combo
             maxcombo=(maxcombo<combo)?combo:maxcombo;
 
-            if (offset < 30) {
+            if (offset < 55) {
                 //Perfect
                 combo++;
                 score+=5000+combo*100
@@ -74,7 +74,7 @@ line.forEach((e, i) => {
 
                 textScore.innerHTML = ``
             textScore.innerHTML += `<p>Perfect!</p><p id="combo">${combo}</p>`
-            } else if (offset < 45) {
+            } else if (offset < 80) {
                 //Great
                 combo++;
                 score+=3000+combo*100
@@ -83,7 +83,7 @@ line.forEach((e, i) => {
 
                 textScore.innerHTML = ``
                 textScore.innerHTML += `<p>Great!</p><p id="combo">${combo}</p>`
-            } else if (offset < 60) {
+            } else if (offset < 110) {
                 //Good
                 score+=1500+combo*100
                 heart+=(heart<10)?0.1:0;
@@ -92,7 +92,7 @@ line.forEach((e, i) => {
                 combo=0;
                 textScore.innerHTML = ``
                 textScore.innerHTML += `<p>Good!</p>`
-            } else if (offset <= 75) {
+            } else if (offset <= 155) {
                 //Bad
                 score+=500+combo*100
                 heart+=(heart<10)?0.1:0;
@@ -100,7 +100,7 @@ line.forEach((e, i) => {
                 combo=0;
                 textScore.innerHTML = ``
                 textScore.innerHTML += `<p>Bad!</p>`
-            } else if (offset > 75 && offset < 200) {
+            } else if (offset > 155 && offset < 300) {
                 combo=0;
                 heart-=1;
                 result[4]++
@@ -170,7 +170,7 @@ function creNote() {
             clearInterval(creNoteInter) 
             closeStage(false)
         }
-        if (music.currentTime == music.duration) {
+        if (music.currentTime == music.duration || step == beatmapAll.length) {
             music.pause()
 
             clearInterval(creNoteInter) 
