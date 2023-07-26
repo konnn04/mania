@@ -51,10 +51,28 @@
 }
 
 .line {
+    transition: all .2s;
     position: relative;
     width: 25%;
     height: 100%;
     border-left: 1px solid #fff;
+}
+
+
+.line.light{
+    animation: light .5s forwards;
+}
+
+@keyframes light{
+    0%{
+        background-color: #ffffff56;   
+    }
+    30%{
+        background-color: #ffffff26;   
+    }
+    100%{
+        background-color: #ffffff00;
+    }
 }
 
 @keyframes down {
@@ -89,6 +107,16 @@
     left: 0;
     z-index: 0;
     border: 1px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#zonecorrect span{
+    opacity: .3;
+    font-size: 2rem;
+    font-family: sans-serif;
+    color: #fff;
 }
 
 #score {

@@ -63,6 +63,7 @@ const update = (data)=>{
                 demo.play()
         }
         playSong[i].onclick = ()=>{
+            initKey()
             music= new Audio(data[i].audio)
             beatmapAll=data[i].beatmap
             home.opacity=0

@@ -56,6 +56,10 @@ line.forEach((e, i) => {
     //     line[i].style.backgroundColor = "none"
     // }
     line[i].onclick = () => {
+        line[i].classList.remove("light")
+        setTimeout(()=>{
+            line[i].classList.add("light")
+        })
         hit.currentTime=0
         hit.play()
         var offset = Math.abs(note[i][nd[i]].getBoundingClientRect().top - zonecorrect.offsetTop)
@@ -104,7 +108,6 @@ line.forEach((e, i) => {
                 combo=0;
                 heart-=1;
                 result[4]++
-
                 textScore.innerHTML = ``
                 textScore.innerHTML += `<p>Miss!</p>`
             }
@@ -113,24 +116,26 @@ line.forEach((e, i) => {
 
 })
 
-document.documentElement.addEventListener('keydown', (e) => {
-    if (started == false && (e.key=='d'||e.key=='f'||e.key=='j'||e.key=='k')) {
-        started=true
-        playBtn.onclick()
-    }
-    if (e.key == 'd' || e.key == 'D') {
-        line[0].onclick()
-    }
-    if (e.key == 'f' || e.key == 'F') {
-        line[1].onclick()
-    }
-    if (e.key == 'j' || e.key == 'J') {
-        line[2].onclick()
-    }
-    if (e.key == 'k' || e.key == 'K') {
-        line[3].onclick()
-    }
-})
+function initKey() {
+    document.documentElement.addEventListener('keydown', (e) => {
+        if (started == false && (e.key=='d'||e.key=='f'||e.key=='j'||e.key=='k')) {
+            started=true
+            playBtn.onclick()
+        }
+        if (e.key == 'd' || e.key == 'D') {
+            line[0].onclick()
+        }
+        if (e.key == 'f' || e.key == 'F') {
+            line[1].onclick()
+        }
+        if (e.key == 'j' || e.key == 'J') {
+            line[2].onclick()
+        }
+        if (e.key == 'k' || e.key == 'K') {
+            line[3].onclick()
+        }
+    })
+}
 
 var started = false
 var playCheck = false
@@ -161,6 +166,7 @@ function creNote() {
                 heart-=1;
                 textScore.innerHTML = ``
                 textScore.innerHTML += `<p>Miss!</p>`
+                combo=0;
             }
         }
         
@@ -170,12 +176,16 @@ function creNote() {
             clearInterval(creNoteInter) 
             closeStage(false)
         }
-        if (music.currentTime == music.duration || step == beatmapAll.length) {
-            music.pause()
-
-            clearInterval(creNoteInter) 
-
-            closeStage(true)            
+        if (music.currentTime == music.duration || step == beatmapAll.length) {        
+               
+                if ( music.volume > 0.015 ){
+                    music.volume = music.volume - 0.005
+                }
+            setTimeout(()=>{
+                //music.pause()
+                clearInterval(creNoteInter)
+                closeStage(true)
+            },5000) 
         }
         root.style.setProperty("--opctbg",(heart/10)*50+"%")
         scoreBoard.innerText=score
